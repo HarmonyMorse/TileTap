@@ -1,0 +1,59 @@
+CONSTANTS
+    colors: background, text, mainTheme
+    winning count: TBD num
+    winning time: TBD amount of seconds
+
+STATE VARIABLES
+    squares clicked counter = 0
+    board = 2d array (size tbd)
+    won = false
+
+CACHED ELEMENTS
+    button
+    each board tile
+
+START GAME (button click)
+    switch to second view
+    init()
+
+INIT 
+    reset state variables
+    render()
+    tileTimer()
+
+RENDER
+    transfer state variables to the DOM (preferably using cached elements)
+    go through each tile
+        if tobeclicked
+            light up
+        else
+            turn off
+
+TILE TIMER
+    setInterval(() => {
+        randomly choose tile to appear
+        render()
+    }, winning count / winning time * 1000);
+
+RANDOM TILE APPEAR
+    repeat
+        x = generate random number between 0 and length of 1st array in board
+        y = generate random number between 0 and the lenght of the xth array in board
+    until board[x][y] is not toBeTapped
+    set board[x][y] toBeTapped = true
+
+CHECK FOR WIN
+    if count >= winning count { won = true }
+    if won is true:
+        stop the game
+        alert the player (TBD how)
+
+HANDLE TAP (delegated event listener on board)
+    if the tile is tobeclicked
+        add 1 to score
+        turn off tobeclicked
+    else
+        (if hard mode) fail
+        (else) return
+    render()
+    checkforwin()
