@@ -8,17 +8,20 @@ const COLORS = {
     toClickTiles: "cadetblue",
 };
 const WINNINGCOUNT = 10;
-const WINNINGTIME = 10;
+const WINNINGTIME = 30;
+const TILESCOUNT = 25;
 
 /*----- state variables -----*/
+let gameOver;
 let tilesTapped;
-let won = false;
 let tileTimerInterval;
+let tilesToBeTapped;
 
 /*----- cached elements  -----*/
 let boardEl = document.getElementById("board");
 let scoreEl = document.getElementById("score");
 let winningCountEl = document.getElementById("winningCount");
+let totalTilesEl = document.getElementById("totalTiles");
 
 /*----- event listeners -----*/
 boardEl.addEventListener("click", handleClick);
@@ -26,10 +29,10 @@ boardEl.addEventListener("click", handleClick);
 /*----- functions -----*/
 init();
 
-// window.location.href = "/game-html/game.html";
-
 function init() {
+    gameOver = false;
     tilesTapped = 0;
+    tilesToBeTapped = 0;
     winningCountEl.innerText = WINNINGCOUNT;
     for (let row = 0; row < ROWS; row++) {
         for (let column = 0; column < COLUMNS; column++) {
@@ -45,25 +48,32 @@ function init() {
 }
 
 function handleClick(e) {
+    if (gameOver) return;
     if (e.target === boardEl) return;
     // console.log(e.target.getAttribute("id"));
     if (e.target.getAttribute("class") == "normal") return;
     e.target.className = "normal";
     tilesTapped++;
+    tilesToBeTapped--;
     render();
     checkForWin();
 }
 
-// CHECK FOR WIN
-// if count >= winning count { won = true }
-// if won is true:
-//     stop the game
-//     alert the player (TBD how)
 function checkForWin() {
     if (tilesTapped >= WINNINGCOUNT) {
         clearInterval(tileTimerInterval);
-        console.log("Won!")
+        displayWin();
     }
+}
+
+function displayWin() {
+    console.log("Won!");
+    gameOver = true;
+}
+
+function displayLoss() {
+    console.log("Lost!");
+    gameOver = true;
 }
 
 function tileTimer() {
@@ -74,17 +84,36 @@ function tileTimer() {
             document.getElementById(`r${ranRow}c${ranCol}`).className ==
             "toBeClicked"
         ) {
+            if (tilesToBeTapped >= TILESCOUNT) return;
             ranRow = Math.floor(Math.random() * ROWS);
             ranCol = Math.floor(Math.random() * COLUMNS);
         }
         document.getElementById(`r${ranRow}c${ranCol}`).className =
             "toBeClicked";
+        tilesToBeTapped++;
         render();
+        if (tilesToBeTapped >= TILESCOUNT) {
+            clearInterval(tileTimerInterval);
+            displayLoss();
+            return;
+        }
     }, (WINNINGCOUNT / WINNINGTIME) * 1000);
+}
+
+function clearBoard() {
+    for (let row = 0; row < ROWS; row++) {
+        for (let column = 0; column < COLUMNS; column++) {
+            let curTile = document.getElementById(`r${row}c${column}`);
+            curTile.className = "normal";
+        }
+    }
+    tilesToBeTapped = 0;
+    render();
 }
 
 function render() {
     scoreEl.innerText = tilesTapped;
+    totalTilesEl.innerText = tilesToBeTapped;
     for (let row = 0; row < ROWS; row++) {
         for (let column = 0; column < COLUMNS; column++) {
             let curTile = document.getElementById(`r${row}c${column}`);
