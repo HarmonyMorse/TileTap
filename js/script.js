@@ -7,20 +7,18 @@ const COLORS = {
     normalTiles: "lightgray",
     toClickTiles: "cadetblue",
 };
-const WINNINGCOUNT = 30;
-const WINNINGTIME = 60;
-// const MAXTILETIME = 0.5;
-// winning time: TBD amount of seconds
+const WINNINGCOUNT = 10;
+const WINNINGTIME = 10;
 
 /*----- state variables -----*/
-let squaresClicked;
+let tilesTapped;
 let won = false;
-// let ranRow = 0;
-// let ranCol = 0;
-// board = 2d array (size tbd)
+let tileTimerInterval;
 
 /*----- cached elements  -----*/
 let boardEl = document.getElementById("board");
+let scoreEl = document.getElementById("score");
+let winningCountEl = document.getElementById("winningCount");
 
 /*----- event listeners -----*/
 boardEl.addEventListener("click", handleClick);
@@ -31,8 +29,8 @@ init();
 // window.location.href = "/game-html/game.html";
 
 function init() {
-    squaresClicked = 0;
-
+    tilesTapped = 0;
+    winningCountEl.innerText = WINNINGCOUNT;
     for (let row = 0; row < ROWS; row++) {
         for (let column = 0; column < COLUMNS; column++) {
             let newTile = document.createElement("div");
@@ -48,26 +46,45 @@ function init() {
 
 function handleClick(e) {
     if (e.target === boardEl) return;
-    console.log(e.target.getAttribute("id"));
+    // console.log(e.target.getAttribute("id"));
+    if (e.target.getAttribute("class") == "normal") return;
     e.target.className = "normal";
+    tilesTapped++;
     render();
+    checkForWin();
+}
+
+// CHECK FOR WIN
+// if count >= winning count { won = true }
+// if won is true:
+//     stop the game
+//     alert the player (TBD how)
+function checkForWin() {
+    if (tilesTapped >= WINNINGCOUNT) {
+        clearInterval(tileTimerInterval);
+        console.log("Won!")
+    }
 }
 
 function tileTimer() {
-    setInterval(() => {
-    let ranRow = Math.floor(Math.random() * (ROWS));
-    let ranCol = Math.floor(Math.random() * (COLUMNS));
-    while (document.getElementById(`r${ranRow}c${ranCol}`).className == "toBeClicked") {
-        ranRow = Math.floor(Math.random() * (ROWS));
-        ranCol = Math.floor(Math.random() * (COLUMNS));
-    };
-    document.getElementById(`r${ranRow}c${ranCol}`).className =
-        "toBeClicked";
-    render();
+    tileTimerInterval = setInterval(() => {
+        let ranRow = Math.floor(Math.random() * ROWS);
+        let ranCol = Math.floor(Math.random() * COLUMNS);
+        while (
+            document.getElementById(`r${ranRow}c${ranCol}`).className ==
+            "toBeClicked"
+        ) {
+            ranRow = Math.floor(Math.random() * ROWS);
+            ranCol = Math.floor(Math.random() * COLUMNS);
+        }
+        document.getElementById(`r${ranRow}c${ranCol}`).className =
+            "toBeClicked";
+        render();
     }, (WINNINGCOUNT / WINNINGTIME) * 1000);
 }
 
 function render() {
+    scoreEl.innerText = tilesTapped;
     for (let row = 0; row < ROWS; row++) {
         for (let column = 0; column < COLUMNS; column++) {
             let curTile = document.getElementById(`r${row}c${column}`);
