@@ -29,6 +29,9 @@ boardEl.addEventListener("click", handleClick);
 /*----- functions -----*/
 init();
 
+let buttonEl = document.getElementsByTagName("button")[0];
+buttonEl.addEventListener("click", init);
+
 function init() {
     gameOver = false;
     tilesTapped = 0;
@@ -43,6 +46,8 @@ function init() {
             boardEl.append(newTile);
         }
     }
+    clearInterval(tileTimerInterval);
+    clearBoard();
     tileTimer();
     render();
 }
@@ -69,6 +74,7 @@ function checkForWin() {
 function displayWin() {
     console.log("Won!");
     gameOver = true;
+    clearBoard();
 }
 
 function displayLoss() {
