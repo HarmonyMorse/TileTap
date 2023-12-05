@@ -16,8 +16,35 @@ header {
     padding: 0 3vmin;
 }
 
+body {
+    background-color: rgb(239, 255, 255);
+}
+
 #welcomeMessage {
     font-size: 7vmin;
+}
+
+#instructions {
+    margin: 20px;
+    margin-top: 5px;
+}
+h1, h2, #welcomeMessage {
+    color: rgb(23, 89, 102);
+}
+h1 {
+    font-size: x-large;
+}
+h2 {
+    font-size: large;
+}
+#instructions > p, ol {
+    color: rgb(43, 129, 142);
+    font-size: medium;
+}
+
+ol {
+    list-style-type: decimal;
+    margin-left: 18px;
 }
 
 .buttons {
@@ -26,7 +53,6 @@ header {
     justify-content: space-around;
     align-items: center;
     height: 11vmin;
-    /* margin-right: 3vmin; */
 }
 
 button {
@@ -35,12 +61,10 @@ button {
     background-color: white;
     border-radius: 1vmin;
     height: 5vmin;
-    /* width: 22vmin; */
-    /* transition-duration: 0.6s; */
 }
 
 button:hover {
-    background-color: cadetblue;
+    background-color: rgb(23, 89, 102);
     color: white;
 }
 
