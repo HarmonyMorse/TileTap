@@ -2,10 +2,8 @@
 const ROWS = 5;
 const COLUMNS = 5;
 const COLORS = {
-    background: "black",
-    text: "white",
-    normalTiles: "lightgray",
-    toClickTiles: "cadetblue",
+    normalTiles: "var(--tile)",
+    toClickTiles: "var(--tile-highlight)",
 };
 const WINNINGCOUNT = 10;
 const WINNINGTIME = 30;
