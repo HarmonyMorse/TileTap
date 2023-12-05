@@ -20,17 +20,19 @@ let boardEl = document.getElementById("board");
 let scoreEl = document.getElementById("score");
 let winningCountEl = document.getElementById("winningCount");
 let totalTilesEl = document.getElementById("totalTiles");
+let buttonEl = document.getElementsByTagName("button")[0];
+let resultMessageEl = document.getElementById("resultMessage");
 
 /*----- event listeners -----*/
 boardEl.addEventListener("click", handleClick);
+buttonEl.addEventListener("click", init);
 
 /*----- functions -----*/
 init();
 
-let buttonEl = document.getElementsByTagName("button")[0];
-buttonEl.addEventListener("click", init);
-
 function init() {
+    resultMessageEl.style.display = "none";
+    boardEl.style.display = "grid";
     gameOver = false;
     tilesTapped = 0;
     tilesToBeTapped = 0;
@@ -53,8 +55,10 @@ function init() {
 function handleClick(e) {
     if (gameOver) return;
     if (e.target === boardEl) return;
-    // console.log(e.target.getAttribute("id"));
-    if (e.target.getAttribute("class") == "normal") return;
+    if (e.target.getAttribute("class") == "normal") {
+        clearInterval(tileTimerInterval);
+        displayLoss();
+    };
     e.target.className = "normal";
     tilesTapped++;
     tilesToBeTapped--;
@@ -72,12 +76,19 @@ function checkForWin() {
 function displayWin() {
     console.log("Won!");
     gameOver = true;
+    boardEl.style.display = "none";
     clearBoard();
+    resultMessageEl.style.display = "block";
+    resultMessageEl.innerHTML = "Congrats, you've won!";
 }
 
 function displayLoss() {
     console.log("Lost!");
     gameOver = true;
+    boardEl.style.display = "none";
+    clearBoard()
+    resultMessageEl.style.display = "block";
+    resultMessageEl.innerHTML = "Sorry, you've lost";
 }
 
 function tileTimer() {
