@@ -31,9 +31,11 @@ body {
 h1, h2, #welcomeMessage {
     color: rgb(23, 89, 102);
 }
+
 h1 {
     font-size: x-large;
 }
+
 h2 {
     font-size: large;
 }
@@ -50,22 +52,56 @@ ol {
 .buttons {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
     height: 11vmin;
 }
 
 button {
-    font-size: 3.5vmin;
-    padding: 0 1vmin;
+    font-size: 3vmin;
+    letter-spacing: .1vmin;
+    text-transform: uppercase;
+    padding: 1vmin 1vmin;
     background-color: white;
+    color: rgb(23, 89, 102);
+    border: none;
     border-radius: 1vmin;
+    width: 33vmin;
     height: 5vmin;
+    transition: all .3s;
+    cursor: pointer;
 }
 
 button:hover {
     background-color: rgb(23, 89, 102);
     color: white;
+    box-shadow: 1vmin 1vmin 2vmin rgba(2, 2, 2, .8);
+    transform: translateY(-1vmin);
+}
+button:active{
+    transform: translateY(-1px);
+}
+
+#startButton {
+    width: 18vmin;
+    margin: 3vmin 0;
+}
+
+#againButton {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 0.2vmin solid black;
+}
+#againButton:active {
+    background-color: white;
+    color: rgb(23, 89, 102);
+}
+#instructionsButton {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: 0.2vmin solid black;
+}
+#instructionsButton:hover {
+    transform: translateY(1vmin);
 }
 
 #board {
