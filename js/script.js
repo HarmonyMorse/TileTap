@@ -40,7 +40,6 @@ function init() {
     for (let row = 0; row < ROWS; row++) {
         for (let column = 0; column < COLUMNS; column++) {
             let newTile = document.createElement("div");
-            // newTile.style.backgroundColor = COLORS.normalTiles;
             newTile.className = "normal";
             newTile.id = `r${row}c${column}`;
             boardEl.append(newTile);
@@ -139,7 +138,6 @@ function render() {
                 curTile.style.height = "14vmin";
                 curTile.style.margin = "1vmin";
             } else {
-                // toBeClicked
                 curTile.style.backgroundColor = COLORS.toClickTiles;
                 curTile.style.width = "15vmin";
                 curTile.style.height = "15vmin";
