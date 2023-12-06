@@ -35,6 +35,7 @@ header {
     margin: 20px;
     margin-top: 5px;
 }
+
 h1, h2, #welcomeMessage {
     color: var(--important-text);
 }
@@ -46,6 +47,7 @@ h1 {
 h2 {
     font-size: large;
 }
+
 #instructions > p, ol {
     color: var(--main-text);
     font-size: medium;
@@ -84,6 +86,7 @@ button:hover {
     box-shadow: 1vmin 1vmin 2vmin rgba(2, 2, 2, .8);
     transform: translateY(-1vmin);
 }
+
 button:active{
     transform: translateY(-1px);
 }
@@ -98,15 +101,18 @@ button:active{
     border-bottom-right-radius: 0;
     border-bottom: 0.2vmin solid var(--important-text);
 }
+
 #againButton:active {
     background-color: white;
     color: var(--important-text);
 }
+
 #instructionsButton {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-top: 0.2vmin solid var(--important-text);
 }
+
 #instructionsButton:hover {
     transform: translateY(1vmin);
 }
@@ -123,7 +129,5 @@ button:active{
     color: var(--important-text);
     text-align: center;
     font-size: medium;
-    /* background-color: var(--tile); */
     margin: 20px auto;
-    /* padding: 20vmin; */
 }
