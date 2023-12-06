@@ -58,6 +58,7 @@ function handleClick(e) {
     if (e.target.getAttribute("class") == "normal") {
         clearInterval(tileTimerInterval);
         displayLoss();
+        return;
     };
     e.target.className = "normal";
     tilesTapped++;
