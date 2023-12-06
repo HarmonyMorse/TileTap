@@ -74,7 +74,6 @@ function checkForWin() {
 }
 
 function displayWin() {
-    console.log("Won!");
     gameOver = true;
     boardEl.style.display = "none";
     clearBoard();
@@ -83,7 +82,6 @@ function displayWin() {
 }
 
 function displayLoss() {
-    console.log("Lost!");
     gameOver = true;
     boardEl.style.display = "none";
     clearBoard()
