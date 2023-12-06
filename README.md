@@ -11,9 +11,13 @@
 ***
 
 ### **_Description_**
-A sleek, reflex-driven whack-a-mole experience. Tapping tiles with precision, navigate through dynamic challenges and unlock levels. Tile Tap offers a refined, on-the-go gaming option with minimalist visuals and a sophisticated touch. Elevate your gaming with this brief yet engaging pursuit of precision and strategy.
+Tile Tap is a simple tapping game where you must tap tiles as they become highlighted. 
 
-Tile Tap was created as part of the front-end build week in General Assembly's [Software Engineering Bootcamp](https://generalassemb.ly/education/software-engineering-immersive) on November 28, 2023.
+Tile Tap was created as part of the front-end build week in General Assembly's [Software Engineering Bootcamp](https://generalassemb.ly/education/software-engineering-immersive) from November 28 to December 6, 2023.
+***
+
+### **_Getting Started_**
+Play Tile Tap [here](http://tiletap.surge.sh)!
 ***
 
 ### **_Technologies_**
@@ -22,6 +26,7 @@ Tile Tap was created as part of the front-end build week in General Assembly's [
   - [Live Preview extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server)
   - [Live Server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
 - [Diagrams.net](https://app.diagrams.net)
+- [Surge](https://surge.sh)
 ***
 
 ### **_Screenshots_**
@@ -31,14 +36,22 @@ Tile Tap was created as part of the front-end build week in General Assembly's [
 
 ### **_Future Updates_**
 - [ ] Levels
-- [ ] "Hover" mode
 - [ ] Hard mode
 - [ ] Endless play
+- [ ] High score
+- [ ] Better font(s)
+- [ ] Sound effects
 - [x] Create README
-- [x] ~~Multiplayer option~~
+- [x] Thorough instructions
+- [ ] ~~Multiplayer option~~
+- [x] ~~"Hover" mode~~
 
 
 ***
 
 ### **_Credits_**
-Markdown template: [General Assembly](https://github.com/SEI-R-11-13/u1_lab_markdown)
+Markdown template: [General Assembly](https://github.com/SEI-R-11-13/u1_lab_markdown)  
+Flexbox lessons: [Flexbox Froggy](https://flexboxfroggy.com)  
+Buttons inspiration: [cssbuttons-io](https://uiverse.io/cssbuttons-io/stale-rattlesnake-87)  
+Hiding and showing elements: [Career Karma](https://careerkarma.com/blog/css-hide-element/)  
+CSS variables: [W3 Schools](https://www.w3schools.com/css/css3_variables.asp)  
